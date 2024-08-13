@@ -1,0 +1,19 @@
+{
+  "name": "projeto1-solicitacao-ti",
+  "version": "1.0.0",
+  "description": "meu projeto Node.js para gerenciamento de solicitações de TI",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biondi06/formulario.git"
+  },
+  "author": "Daniel Biondi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biondi06/formulario/issues"
+  },
+  "homepage": "https://github.com/biondi06/formulario#readme"
+}
