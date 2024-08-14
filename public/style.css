@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +19,7 @@ body {
 #container--main {
     display: flex;
     width: 100vw;
-    height: calc(100vh - 6rem); /* Garante que o container não sobreponha o rodapé */
+    height: calc(100vh - 6rem); 
     background: radial-gradient(circle at top left, #041b33, #041b33 40%, #cdd1d3 60%, #cdd1d3), 
                 linear-gradient(135deg, rgba(4, 27, 51, 0.6), rgba(205, 209, 211, 0.6));
     background-blend-mode: overlay; 
@@ -50,7 +49,7 @@ body {
 
 .image--aside img {
     height: 60rem;
-    max-width: 90%; /* Garante que a imagem não ultrapasse a largura do container */
+    max-width: 90%; 
     border-radius: 24px;
     transition: transform 0.3s ease;
     background-color: #041b33; 
@@ -63,19 +62,19 @@ body {
 }
 
 .container {
-    margin: 2rem auto; /* Ajusta o espaçamento ao redor do contêiner do formulário */
+    margin: 2rem auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 85%; /* Reduz a largura do formulário */
-    max-width: 700px; /* Define uma largura máxima menor para o formulário */
+    width: 85%; 
+    max-width: 700px; 
     background: #ffffff; 
     border-radius: 24px; 
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2); 
-    padding: 2rem; /* Ajusta o preenchimento interno */
+    padding: 2rem; 
     border: 1px solid #041b33; 
-    max-height: 75vh; /* Define uma altura máxima para o formulário */
-    overflow-y: auto; /* Adiciona rolagem se o conteúdo ultrapassar a altura */
+    max-height: 82vh; 
+    overflow-y: auto; 
 }
 
 h1 {
@@ -191,9 +190,9 @@ select option {
 }
 
 #complaint {
-    width: 100%; /* Mantém a largura do campo */
-    height: 10rem; /* Define uma altura fixa para o campo de texto */
-    resize: none; /* Impede que o campo seja redimensionado pelo usuário */
+    width: 100%; 
+    height: 10rem; 
+    resize: none; 
     margin-bottom: 1.6rem;
     padding: 1.4rem;
     border-radius: 16px;
@@ -233,9 +232,6 @@ select option {
     width: 100%; 
     bottom: 0;
 }
-
-/* Media Queries para Responsividade */
-
 @media (max-width: 768px) {
     #container--main {
     }
