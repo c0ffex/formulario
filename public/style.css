@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -231,4 +232,36 @@ select option {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Media Queries for Responsive Design */
+
+@media (max-width: 768px) {
+    .container--parent, .image--aside {
+        width: 100%;
+    }
+
+    .image--aside img {
+        height: 40rem; /* Ajuste o tamanho da imagem para se adequar melhor em telas menores */
+    }
+
+    h1 {
+        font-size: 3rem; /* Reduza o tamanho da fonte do título em telas menores */
+    }
+
+    label, input, select, .list, #complaint {
+        font-size: 1.4rem; /* Reduza o tamanho da fonte dos inputs e labels */
+    }
+
+    .btn {
+        width: 12rem; /* Ajuste a largura do botão */
+        height: 4rem; /* Ajuste a altura do botão */
+        font-size: 1.6rem; /* Ajuste o tamanho da fonte do botão */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem; 
+    }
 }
