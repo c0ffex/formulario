@@ -232,8 +232,6 @@ select option {
     width: 100%;
     bottom: 0;
 }
-
-/* Responsividade */
 @media (max-width: 768px) {
     .container--parent, .image--aside {
         width: 100%;
