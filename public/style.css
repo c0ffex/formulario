@@ -242,20 +242,20 @@ select option {
     }
 
     .image--aside img {
-        height: 40rem; /* Ajuste o tamanho da imagem para se adequar melhor em telas menores */
+        height: 30rem; /* Ajuste o tamanho da imagem para se adequar melhor em telas menores */
     }
 
     h1 {
-        font-size: 3rem; /* Reduza o tamanho da fonte do título em telas menores */
+        font-size: 2rem; /* Reduza o tamanho da fonte do título em telas menores */
     }
 
     label, input, select, .list, #complaint {
-        font-size: 1.4rem; /* Reduza o tamanho da fonte dos inputs e labels */
+        font-size: 1.2rem; /* Reduza o tamanho da fonte dos inputs e labels */
     }
 
     .btn {
-        width: 12rem; /* Ajuste a largura do botão */
-        height: 4rem; /* Ajuste a altura do botão */
+        width: 10rem; /* Ajuste a largura do botão */
+        height: 7rem; /* Ajuste a altura do botão */
         font-size: 1.6rem; /* Ajuste o tamanho da fonte do botão */
     }
 }
