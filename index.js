@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
 app.post('/submit', (req, res) => {
   const { nome, email, assunto, complaint } = req.body;
 
-  // Configuração do Nodemailer
   const transporter = nodemailer.createTransport({
     service: 'Outlook365',
     auth: {

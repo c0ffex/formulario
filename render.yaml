@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: my-node-app
-    env: node
-    plan: free
-    buildCommand: npm install
-    startCommand: npm start
-    branch: main
-    # Configurações adicionais (como variáveis de ambiente) podem ser adicionadas aqui.
