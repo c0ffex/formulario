@@ -7,21 +7,18 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware para parsear corpo das requisições
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Servir arquivos estáticos da pasta public
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rota principal que serve o index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-// Rota para lidar com o envio de formulário
-app.post('/api/submit', (req, res) => {
+app.post('/submit', (req, res) => {
   const { nome, email, assunto, complaint } = req.body;
+
 
   const transporter = nodemailer.createTransport({
     service: 'Outlook365', 
@@ -31,9 +28,10 @@ app.post('/api/submit', (req, res) => {
     }
   });
 
+ 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER, 
     subject: `Nova Solicitação de TI: ${assunto}`,
     html: `
       <html>
@@ -170,19 +168,19 @@ app.post('/api/submit', (req, res) => {
     `
   };
 
+  console.log('Tentando enviar e-mail...'); 
+
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error('Erro ao enviar o e-mail:', error);
-      // Redireciona para a página de erro
-      return res.redirect('/thank-you.html?status=error');
+      return res.status(500).send('Erro ao enviar o e-mail.'); 
     }
     console.log('E-mail enviado:', info.response);
-    // Redireciona para a página de sucesso
-    res.redirect('/thank-you.html?status=success');
+    res.redirect('/thank-you.html?status=success'); 
   });
 });
 
-// Iniciar o servidor
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
