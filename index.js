@@ -1,4 +1,3 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -6,20 +5,25 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
+// Middleware para parsear corpo das requisições
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Servir arquivos estáticos da pasta public
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Rota principal
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+// Rota para submissão do formulário
 app.post('/submit', (req, res) => {
   const { nome, email, assunto, complaint } = req.body;
 
+  // Configuração do Nodemailer
   const transporter = nodemailer.createTransport({
     service: 'Outlook365',
     auth: {
@@ -177,6 +181,7 @@ app.post('/submit', (req, res) => {
   });
 });
 
+// Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
