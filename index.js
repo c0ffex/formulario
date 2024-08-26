@@ -7,16 +7,20 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Middleware para parsear corpo das requisições
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Servir arquivos estáticos da pasta public
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Rota principal que serve o index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-app.post('/submit', (req, res) => {
+// Rota para lidar com o envio de formulário
+app.post('/api/submit', (req, res) => {
   const { nome, email, assunto, complaint } = req.body;
 
   const transporter = nodemailer.createTransport({
@@ -166,17 +170,19 @@ app.post('/submit', (req, res) => {
     `
   };
 
-
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error('Erro ao enviar o e-mail:', error);
-      return res.redirect('/thank-you.html?status=error'); 
+      // Redireciona para a página de erro
+      return res.redirect('/thank-you.html?status=error');
     }
     console.log('E-mail enviado:', info.response);
-    res.redirect('/thank-you.html?status=success'); 
+    // Redireciona para a página de sucesso
+    res.redirect('/thank-you.html?status=success');
   });
 });
 
+// Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
