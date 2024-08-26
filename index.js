@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-// Rota para submissão do formulário
 app.post('/submit', (req, res) => {
   const { nome, email, assunto, complaint } = req.body;
 
