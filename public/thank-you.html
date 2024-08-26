@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,70 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        .message-cloud {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 320px; 
+            padding: 35px;
+            background: #ffffff; 
+            color: #333; 
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            font-size: 1.1rem;
+            z-index: 1000;
+            display: none; 
+            text-align: center;
+            overflow: hidden;
+            border-left: 6px solid; 
+            border-image-slice: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .message-cloud.success {
+            border-color: #28a745; 
+        }
+        .message-cloud.error {
+            border-color: #dc3545; 
+        }
+        .message-cloud p {
+            margin: 0;
+            font-weight: 500;
+            line-height: 1.5;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); 
+            font-size: 1.5rem; 
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            background-color: #28a745; 
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: progress 5s linear forwards;
+        }
+        .progress-bar.error span {
+            background-color: #dc3545; 
+        }
+        @keyframes progress {
+            0% {
+                width: 100%;
+            }
+            100% {
+                width: 0%;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -33,6 +98,43 @@
     <footer class="footer-bottom">
         <p>&copy; 2024 Thomaz Alves Advogados. Todos os direitos reservados.</p>
     </footer>
+
+    <div id="message-cloud" class="message-cloud">
+        <p id="message-text"></p>
+        <div class="progress-bar">
+            <span></span>
+        </div>
+    </div>
+
+    <script>
+        function showMessage(message, type) {
+            const messageCloud = document.getElementById('message-cloud');
+            const messageText = document.getElementById('message-text');
+            messageText.textContent = message;
+            messageCloud.className = `message-cloud ${type}`; 
+            messageCloud.style.display = 'block';
+
+            const progressBarSpan = messageCloud.querySelector('.progress-bar span');
+            progressBarSpan.style.animation = 'progress 5s linear forwards';
+
+            setTimeout(() => {
+                messageCloud.style.opacity = '0'; 
+                setTimeout(() => {
+                    messageCloud.style.display = 'none';
+                }, 300); 
+            }, 5000);
+        }
+
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status'); 
+        
+        if (status === 'success') {
+            showMessage('Solicitação enviada com sucesso!', 'success');
+        } else if (status === 'error') {
+            showMessage('Erro ao enviar o formulário. Tente novamente.', 'error');
+        }
+    </script>
 
 </body>
 </html>

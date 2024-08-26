@@ -63,18 +63,24 @@
     <script>
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault(); 
+            
+            const formData = new URLSearchParams(new FormData(this)).toString();
+
             fetch('/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: new URLSearchParams(new FormData(this)).toString()
+                body: formData
             })
             .then(response => response.text())
             .then(text => {
-                window.location.href = 'thank-you.html'; 
+                window.location.href = 'thank-you.html?status=success'; 
             })
-            .catch(error => console.error('Erro:', error));
+            .catch(error => {
+                console.error('Erro:', error);
+                window.location.href = 'thank-you.html?status=error'; 
+            });
         });
     </script>
 
