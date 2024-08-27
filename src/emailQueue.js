@@ -17,7 +17,7 @@ emailQueue.process(async (job) => {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,
+    to: "yudisakuma@gmail.com",
     subject: `Suporte TI: ${assunto}`,
     html: `
       <html>
